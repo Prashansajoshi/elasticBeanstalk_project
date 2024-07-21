@@ -43,11 +43,11 @@ jobs:
         working-directory: terraform
 
       - name: Terraform Plan
-        run: terraform plan -var "iam_instance_profile=your-iam-instance-profile"
+        run: terraform plan ## -var "iam_instance_profile=your-iam-instance-profile"
         working-directory: terraform
 
       - name: Terraform apply
-        run: terraform apply -auto-approve
+        run: terraform apply -var "iam_instance_profile=your-iam-instance-profile"
         working-directory: terraform 
 
     #   - name: Terraform Destroy
