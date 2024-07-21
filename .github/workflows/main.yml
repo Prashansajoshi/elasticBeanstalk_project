@@ -43,7 +43,7 @@ jobs:
         working-directory: terraform
 
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan -var "iam_instance_profile=your-iam-instance-profile"
         working-directory: terraform
 
       - name: Terraform apply
