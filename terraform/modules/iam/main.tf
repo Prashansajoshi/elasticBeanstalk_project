@@ -92,4 +92,4 @@ resource "aws_iam_instance_profile" "eb_profile" {
 # resource "aws_iam_instance_profile" "this" {
 #   name = "prashansa_iam_aws_instance"
 #   role = aws_iam_role.this.name
-}
+# }

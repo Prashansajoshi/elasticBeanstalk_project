@@ -130,32 +130,30 @@ jobs:
                 aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
                 aws-region: us-east-1
 
-          - name: Creating frontend .env file
-            run:
-                dest: app.zip/frontend/.env
-                content: |
-                    VITE_API_URL=http://54.236.46.163:3000
+        #   - name: Creating frontend .env file
+        #     run:
+        #         dest: app.zip/frontend/.env
+        #         content: |
+        #             VITE_API_URL=http://54.236.46.163:3000
 
-          - name: Ensure npm is installed
-            apt:
-                name: npm
-                state: present
-                update_cache: yes
+        #   - name: Ensure npm is installed
+        #     apt:
+        #         name: npm
+        #         state: present
+        #         update_cache: yes
 
-          - name: Install pm2 globally
-            npm:
-                name: pm2
-                global: yes
-                state: present
+        #   - name: Install pm2 globally
+        #     npm:
+        #         name: pm2
+        #         global: yes
+        #         state: present
 
-          - name: Install frontend dependencies
-            command: npm install
-            args:
-                chdir: /home/ubuntu/Node_Project/frontend
+        #   - name: Install frontend dependencies
+        #     command: npm install
+        #     args:
+        #         chdir: /home/ubuntu/Node_Project/frontend
 
-          - name: Install backend dependencies
-            command: npm install
-            args:
-                chdir: /home/ubuntu/Node_Project/backend
-
-
+        #   - name: Install backend dependencies
+        #     command: npm install
+        #     args:
+        #         chdir: /home/ubuntu/Node_Project/backend
