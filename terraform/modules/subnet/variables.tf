@@ -18,3 +18,13 @@ variable "availability_zone_1" {
 
 variable "availability_zone_2" {
 }
+
+variable "database_subnet_1_cidr" {
+  description = "The CIDR block for the first database subnet"
+  type        = string
+}
+
+variable "database_subnet_2_cidr" {
+  description = "The CIDR block for the second database subnet"
+  type        = string
+}

@@ -49,6 +49,15 @@ resource "aws_security_group" "prashansa_db_sg" {
   description = "prashansa aws db securitygroup built using terraform"
   vpc_id      = var.vpc_id
 
+
+    ingress{
+    description = "prashansa security group from terraform mysql"
+    cidr_blocks = [var.all_cidr_block]
+    from_port   = 80
+    protocol = "tcp"
+    to_port     = 80
+    }
+
   ingress{
     description = "prashansa security group from terraform mysql"
     cidr_blocks = [var.all_cidr_block]
@@ -56,6 +65,22 @@ resource "aws_security_group" "prashansa_db_sg" {
     protocol = "tcp"
     to_port     = 3306
   }
+
+  ingress{
+    description = "prashansa security group from terraform mysql"
+    cidr_blocks = [var.all_cidr_block]
+    from_port   = 5173
+    protocol = "tcp"
+    to_port     = 5173
+  }
+
+    ingress{
+    description = "prashansa security group from terraform mysql"
+    cidr_blocks = [var.all_cidr_block]
+    from_port   = 3000
+    protocol = "tcp"
+    to_port     = 3000
+    }
 
   egress{
     description = "egress for all traffic"

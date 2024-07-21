@@ -15,3 +15,9 @@ variable "public_route_table_id" {
 
 variable "private_route_table_id" { 
 }
+
+variable "db_subnet_1" { 
+}
+
+variable "db_subnet_2" { 
+}
