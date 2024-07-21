@@ -119,6 +119,7 @@ module "elastic_beanstalk" {
   instance_type        = var.instance_type
   solution_stack_name  = var.solution_stack_name
   key_name             = var.key_name
+  database_name        = var.database_name
   db_username          = var.db_username
   db_password          = var.db_password
   iam_instance_profile = module.iam.eb_instance_profile_name
