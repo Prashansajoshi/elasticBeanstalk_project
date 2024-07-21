@@ -75,19 +75,41 @@ jobs:
 
           - name: Create backend .env file
             run: |
-                echo "APP_PORT=3000" > /home/ubuntu/Node_Project/backend/.env
-                echo "" >> /home/ubuntu/Node_Project/backend/.env
-                echo "### DB_HOST could be remote host, proxy or localhost URL but must be mysql" >> /home/ubuntu/Node_Project/backend/.env
-                echo "DB_HOST=${{ secrets.DB_SERVER }}" >> /home/ubuntu/Node_Project/backend/.env
-                echo "DB_PORT=${{ secrets.DB_PORT }}" >> /home/ubuntu/Node_Project/backend/.env
-                echo "DB_NAME=${{ secrets.DB_NAME }}" >> /home/ubuntu/Node_Project/backend/.env
-                echo "" >> /home/ubuntu/Node_Project/backend/.env
-                echo "CRED=from_env" >> /home/ubuntu/Node_Project/backend/.env
-                echo "" >> /home/ubuntu/Node_Project/backend/.env
-                echo "### If you are Passing Credentials Directly from ENV" >> /home/ubuntu/Node_Project/backend/.env
-                echo "DB_USER=${{ secrets.DB_USERNAME }}" >> /home/ubuntu/Node_Project/backend/.env
-                echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> /home/ubuntu/Node_Project/backend/.env
+                echo "APP_PORT=3000" > .env
+                echo "" >> .env
+                echo "### DB_HOST could be remote host, proxy or localhost URL but must be mysql" >> .env
+                echo "DB_HOST=${{ secrets.DB_SERVER }}" >> .env
+                echo "DB_PORT=${{ secrets.DB_PORT }}" >> .env
+                echo "DB_NAME=${{ secrets.DATABASE_NAME }}" >> .env
+                echo "" >> .env
+                echo "CRED=from_env" >> .env
+                echo "" >> .env
+                echo "### If you are Passing Credentials Directly from ENV" >> .env
+                echo "DB_USER=${{ secrets.DB_USERNAME }}" >> .env
+                echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
 
-        #   - name: Upload app.zip to S3
-        #     run: aws s3 cp path/to/app.zip s3://my-nodejs-app-eb-bucket/app.zip
-        
+          - name: Zip application files
+            run: zip -r app.zip path/to/your/application
+
+          - name: Upload app.zip to S3
+            run: aws s3 cp app.zip s3://my-nodejs-app-eb-bucket/app.zip
+
+          - name: Deploy to Elastic Beanstalk
+            run: |
+                aws elasticbeanstalk create-application-version \
+                    --application-name my-nodejs-app \
+                    --version-label v1 \
+                    --source-bundle S3Bucket=my-nodejs-app-eb-bucket,S3Key=app.zip
+
+                aws elasticbeanstalk update-environment \
+                    --application-name my-nodejs-app \
+                    --environment-name my-nodejs-env \
+                    --version-label v1 \
+                    --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=APP_PORT,Value=3000 \
+                    --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_HOST,Value=${{ secrets.DB_SERVER }} \
+                    --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_PORT,Value=${{ secrets.DB_PORT }} \
+                    --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_NAME,Value=${{ secrets.DATABASE_NAME }} \
+                    --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_USER,Value=${{ secrets.DB_USERNAME }} \
+                    --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_PASSWORD,Value=${{ secrets.DB_PASSWORD }}
+
+
