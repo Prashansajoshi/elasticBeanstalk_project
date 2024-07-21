@@ -88,11 +88,11 @@ jobs:
                 echo "DB_USER=${{ secrets.DB_USERNAME }}" >> .env
                 echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
 
-          - name: Zip application files
-            run: zip -r app.zip path/to/your/application
+        #   - name: Zip application files
+        #     run: zip -r app.zip path/to/your/application
 
-          - name: Upload app.zip to S3
-            run: aws s3 cp app.zip s3://my-nodejs-app-eb-bucket/app.zip
+        #   - name: Upload app.zip to S3
+        #     run: aws s3 cp app.zip s3://my-nodejs-app-eb-bucket/app.zip
 
           - name: Deploy to Elastic Beanstalk
             run: |
