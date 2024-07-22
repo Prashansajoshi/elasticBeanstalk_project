@@ -122,5 +122,5 @@ jobs:
   
       - name: Notify success
         if: success()
-        run: echo "Deployment successful!"
+        run: echo "Deployment successful!!"
   
