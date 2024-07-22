@@ -43,7 +43,7 @@ jobs:
         working-directory: terraform
 
       - name: Terraform Plan
-        run: terraform plan -var "iam_instance_profile=your-iam-instance-profile" #
+        run: terraform plan -var "iam_instance_profile=your-iam-instance-profile" 
         working-directory: terraform
 
       - name: Terraform apply
@@ -63,6 +63,9 @@ jobs:
       steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: List files
+        run: ls -la
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
