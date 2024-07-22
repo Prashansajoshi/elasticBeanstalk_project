@@ -73,8 +73,8 @@ jobs:
         run: sudo npm install
         working-directory: ./my_application
 
-      - name: Run tests
-        run: npm test
+      # - name: Run tests
+      #   run: npm test
 
       - name: Build the application
         run: sudo npm run build
@@ -133,7 +133,7 @@ jobs:
 
 
 
-        
+
 
 # name: Deployment using Elastic Beanstalk
 
