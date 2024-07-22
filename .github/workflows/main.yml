@@ -107,6 +107,7 @@ jobs:
                 --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_USER,Value=${{ secrets.DB_USERNAME }} \
                 --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_PASSWORD,Value=${{ secrets.DB_PASSWORD }}
         
+                
 
           # - name: Update Elastic Beanstalk Environment
           #   run: |
