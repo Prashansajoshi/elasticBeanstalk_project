@@ -94,7 +94,7 @@ jobs:
         #   - name: Upload app.zip to S3
         #     run: aws s3 cp app.zip s3://my-nodejs-app-eb-bucket/app.zip
 
-          - name: Deploy to Elastic Beanstalk
+          - name: Deploy to Elastic Beanstalk  ######
             run: |
                 aws elasticbeanstalk create-application-version \
                     --application-name my-nodejs-app \
