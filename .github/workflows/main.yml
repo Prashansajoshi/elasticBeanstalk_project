@@ -67,6 +67,12 @@ jobs:
             npm run build
           working-directory: ./my_application
 
+        - name: Install backend dependencies
+          run: |
+            cd backend
+            npm install
+          working-directory: ./my_application
+
         - name: Zip application
           run: |
             cd my_application
