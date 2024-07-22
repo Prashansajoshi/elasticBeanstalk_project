@@ -60,7 +60,14 @@ jobs:
         steps:
         - uses: actions/checkout@v4
 
-        - name: Build and zip application
+        - name: Install and build frontend
+          run: |
+            cd frontend
+            npm install
+            npm run build
+          working-directory: ./my_application
+
+        - name: Zip application
           run: |
             cd my_application
             zip -r ../app.zip .
@@ -107,7 +114,7 @@ jobs:
                 --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_USER,Value=${{ secrets.DB_USERNAME }} \
                 --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_PASSWORD,Value=${{ secrets.DB_PASSWORD }}
         
-                
+
 
           # - name: Update Elastic Beanstalk Environment
           #   run: |
