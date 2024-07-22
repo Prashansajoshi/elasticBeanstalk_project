@@ -63,11 +63,12 @@ jobs:
         - name: Build and zip application
           run: |
             cd my_application
-            zip -r ../my_application.zip .
+            zip -r app.zip my_application/
 
         - name: Upload to S3
-          run: aws s3 cp ../my_application.zip s3://${{ secrets.APP_BUCKET_NAME }}/app.zip
-
+          run: aws s3 cp my_application.zip s3://${{ secrets.APP_BUCKET_NAME }}/app.zip
+          working-directory: .
+      
 
     setup_env:
         runs-on: ubuntu-latest
