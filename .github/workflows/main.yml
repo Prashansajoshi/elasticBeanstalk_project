@@ -54,55 +54,34 @@ jobs:
     #     run: terraform destroy -auto-approve
     #     working-directory: terraform
 
-    # upload_to_s3:
-    #     runs-on: ubuntu-latest
-    #     needs: terraform_infrastructure
-    #     steps:
-    #     - uses: actions/checkout@v4
-
-    #     - name: Install and build frontend
-    #       run: |
-    #         cd frontend
-    #         npm install
-    #         npm run build
-    #       working-directory: ./my_application
-
-    #     - name: Install backend dependencies
-    #       run: |
-    #         cd backend
-    #         npm install
-    #       working-directory: ./my_application
-
-    #     - name: Zip application
-    #       run: |
-    #         cd my_application
-    #         zip -r ../app.zip ./*
-    #       working-directory: .
-
-    #     - name: Upload to S3
-    #       run: aws s3 cp app.zip s3://${{ secrets.APP_BUCKET_NAME }}/app.zip
-    #       working-directory: .
-
     upload_to_s3:
-      runs-on: ubuntu-latest
-      needs: terraform_infrastructure
-      steps:
-      - uses: actions/checkout@v4
+        runs-on: ubuntu-latest
+        needs: terraform_infrastructure
+        steps:
+        - uses: actions/checkout@v4
 
-      - name: Install and build frontend
-        run: |
-          npm install
-        working-directory: ./my_application
+        - name: Install and build frontend
+          run: |
+            cd frontend
+            npm install
+            npm run build
+          working-directory: ./my_application
 
-      - name: Zip application
-        run: |
-          cd my_application
-          zip -r ../app.zip ./*
-        working-directory: .
+        - name: Install backend dependencies
+          run: |
+            cd backend
+            npm install
+          working-directory: ./my_application
 
-      - name: Upload to S3
-        run: aws s3 cp app.zip s3://${{ secrets.APP_BUCKET_NAME }}/app.zip
-        working-directory: .
+        - name: Zip application
+          run: |
+            cd my_application
+            zip -r ../app.zip ./*
+          working-directory: .
+
+        - name: Upload to S3
+          run: aws s3 cp app.zip s3://${{ secrets.APP_BUCKET_NAME }}/app.zip
+          working-directory: .
       
 
     setup_env:

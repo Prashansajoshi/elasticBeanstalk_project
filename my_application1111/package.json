@@ -1,9 +1,0 @@
-{
-    "name": "my_application",
-    "version": "1.0.0",
-    "scripts": {
-      "postinstall": "cd frontend && npm install && cd ../backend && npm install && cd ../frontend && npm run build"
-    },
-    "dependencies": {}
-  }
-  
