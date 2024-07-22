@@ -92,7 +92,6 @@ jobs:
       - name: Install and build frontend
         run: |
           npm install
-          npm run build
         working-directory: ./my_application
 
       - name: Zip application
