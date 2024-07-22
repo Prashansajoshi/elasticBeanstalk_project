@@ -73,7 +73,7 @@ jobs:
               aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
               aws-region: us-east-1
 
-          # - name: Deploy to Elastic Beanstalk  ######
+          # - name: Deploy to Elastic Beanstalk  
           #   run: |
           #     aws elasticbeanstalk create-application-version \
           #         --application-name my-nodejs-app \
