@@ -88,24 +88,25 @@ jobs:
               aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
               aws-region: us-east-1
 
-          # - name: Deploy to Elastic Beanstalk  
-          #   run: |
-          #     aws elasticbeanstalk create-application-version \
-          #         --application-name my-nodejs-app \
-          #         --version-label v1 \
-          #         --source-bundle S3Bucket=my-nodejs-app-eb-bucket,S3Key=app.zip
-
-          #     aws elasticbeanstalk update-environment \
-          #         --application-name my-nodejs-app \
-          #         --environment-name my-nodejs-env \
-          #         --version-label v1 \
-          #         --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=APP_PORT,Value=3000 \
-          #         --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_HOST,Value=${{ secrets.DB_SERVER }} \
-          #         --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_PORT,Value=${{ secrets.DB_PORT }} \
-          #         --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_NAME,Value=${{ secrets.DATABASE_NAME }} \
-          #         --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_USER,Value=${{ secrets.DB_USERNAME }} \
-          #         --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_PASSWORD,Value=${{ secrets.DB_PASSWORD }}
-
+          - name: Deploy to Elastic Beanstalk
+            run: |
+              VERSION_LABEL=$(date +%Y%m%d%H%M%S)
+              aws elasticbeanstalk create-application-version \
+                --application-name ${{ secrets.APPLICATION_NAME }} \
+                --version-label $VERSION_LABEL \
+                --source-bundle S3Bucket=${{ secrets.APP_BUCKET_NAME }},S3Key=app.zip
+      
+              aws elasticbeanstalk update-environment \
+                --application-name ${{ secrets.APPLICATION_NAME }} \
+                --environment-name ${{ secrets.ENVIRONMENT_NAME }} \
+                --version-label $VERSION_LABEL \
+                --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=APP_PORT,Value=3000 \
+                --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_HOST,Value=${{ secrets.DB_SERVER }} \
+                --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_PORT,Value=${{ secrets.DB_PORT }} \
+                --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_NAME,Value=${{ secrets.DATABASE_NAME }} \
+                --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_USER,Value=${{ secrets.DB_USERNAME }} \
+                --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_PASSWORD,Value=${{ secrets.DB_PASSWORD }}
+        
 
           # - name: Update Elastic Beanstalk Environment
           #   run: |
@@ -120,12 +121,12 @@ jobs:
           #       --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=DB_PASSWORD,Value=${{ secrets.DB_PASSWORD }}
 
 
-          - name: Delete existing application version
-            run: |
-              aws elasticbeanstalk delete-application-version \
-                --application-name ${{ secrets.APPLICATION_NAME }} \
-                --version-label v1 \
-                --delete-source-bundle
+          # - name: Delete existing application version
+          #   run: |
+          #     aws elasticbeanstalk delete-application-version \
+          #       --application-name ${{ secrets.APPLICATION_NAME }} \
+          #       --version-label v1 \
+          #       --delete-source-bundle
   
 
           # - name: Create backend .env file
