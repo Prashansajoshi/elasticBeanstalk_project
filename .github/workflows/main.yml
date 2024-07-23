@@ -111,21 +111,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
   
-      # - name: Set up AWS CLI
-      #   run: |
-      #     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-      #     unzip awscliv2.zip
-      #     sudo ./aws/install
-  
-      # - name: Zip application
-      #   run: |
-      #     cd my_application
-      #     zip -r ../app.zip ./*
-      #   working-directory: .
-
-      # - name: Upload to S3
-      #   run: aws s3 cp app.zip s3://${{ secrets.APP_BUCKET_NAME }}/app.zip
-      #   working-directory: .
+      - name: Verify zip contents
+        run: unzip -l app.zip
 
       - name: Deploy to Elastic Beanstalk
         run: |
