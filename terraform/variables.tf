@@ -159,11 +159,6 @@ variable "solution_stack_name" {
   default     = "64bit Amazon Linux 2023 v6.1.7 running Node.js 20"
 }
 
-variable "load_balancer" {
-  default = ""
-}
-
-
 
 variable "iam_instance_profile" {
   description = "The IAM instance profile for Elastic Beanstalk"
