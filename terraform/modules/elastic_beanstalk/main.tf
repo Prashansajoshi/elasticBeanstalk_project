@@ -69,6 +69,12 @@ resource "aws_elastic_beanstalk_environment" "env" {
   }
 
   setting {
+    namespace = "aws:elasticbeanstalk:environment"
+    name      = "LoadBalancerType"
+    value     = "application"
+  }
+
+  setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "DB_HOST"
     # value     = aws_db_instance.prashansa_private_db_instance.endpoint
@@ -92,4 +98,5 @@ resource "aws_elastic_beanstalk_environment" "env" {
     name      = "DB_NAME"
     value     = var.database_name
   }
+
 } 

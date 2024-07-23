@@ -124,4 +124,5 @@ module "elastic_beanstalk" {
   db_password          = var.db_password
   iam_instance_profile = module.iam.eb_instance_profile_name
   db_host              = module.rds.db_instance_endpoint
+  load_balancer        = var.load_balancer
 }
