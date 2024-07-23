@@ -130,3 +130,9 @@ jobs:
       - name: Notify success
         if: success()
         run: echo "Deployment successful!!"
+
+
+
+        # 02_start_application:
+        #   command: "npm start"
+        #   cwd: "/var/app/staging"
