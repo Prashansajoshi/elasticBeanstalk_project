@@ -83,6 +83,15 @@ jobs:
         run: sudo npm run build
         working-directory: ./my_application
 
+      - name: Zip application
+        run: |
+          cd my_application
+          zip -r ../app.zip ./* 
+
+      - name: Upload to S3
+        run: aws s3 cp app.zip s3://${{ secrets.APP_BUCKET_NAME }}/app.zip
+        working-directory: ./my_application
+
 
 
     deploy:
@@ -99,15 +108,15 @@ jobs:
       #     unzip awscliv2.zip
       #     sudo ./aws/install
   
-      - name: Zip application
-        run: |
-          cd my_application
-          zip -r ../app.zip ./*
-        working-directory: .
+      # - name: Zip application
+      #   run: |
+      #     cd my_application
+      #     zip -r ../app.zip ./*
+      #   working-directory: .
 
-      - name: Upload to S3
-        run: aws s3 cp app.zip s3://${{ secrets.APP_BUCKET_NAME }}/app.zip
-        working-directory: .
+      # - name: Upload to S3
+      #   run: aws s3 cp app.zip s3://${{ secrets.APP_BUCKET_NAME }}/app.zip
+      #   working-directory: .
 
       - name: Deploy to Elastic Beanstalk
         run: |
