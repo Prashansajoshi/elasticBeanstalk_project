@@ -81,6 +81,7 @@ jobs:
 
       - name: Build the application
         run: sudo npm run build
+        working-directory: ./my_application
 
 
 
