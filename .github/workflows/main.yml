@@ -72,6 +72,9 @@ jobs:
         with:
           node-version: '18'
 
+      - name: npm version
+        run: npm --version
+
       - name: Install dependencies
         run: sudo npm install
         working-directory: ./my_application
