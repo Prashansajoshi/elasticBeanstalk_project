@@ -68,11 +68,11 @@ resource "aws_elastic_beanstalk_environment" "env" {
     value     = "LoadBalanced" # or "SingleInstance"
   }
 
-  # setting {
-  #   namespace = "aws:elasticbeanstalk:environment"
-  #   name      = "LoadBalancerType"
-  #   value     = "application"
-  # }
+  setting {
+    namespace = "aws:elasticbeanstalk:environment"
+    name      = "LoadBalancerType"
+    value     = "application"
+  }
 
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
