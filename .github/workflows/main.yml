@@ -79,9 +79,6 @@ jobs:
         run: sudo npm install
         working-directory: ./my_application
 
-      # - name: Run tests 
-      #   run: npm test
-
       - name: Build the application
         run: sudo npm run build
         working-directory: ./my_application
