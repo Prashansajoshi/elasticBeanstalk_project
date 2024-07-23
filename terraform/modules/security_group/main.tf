@@ -90,6 +90,14 @@ resource "aws_security_group" "prashansa_db_sg" {
     to_port     = 5173
   }
 
+  ingress{
+    description = "prashansa security group from terraform mysql"
+    cidr_blocks = [var.all_cidr_block]
+    from_port   = 3001
+    protocol = "tcp"
+    to_port     = 3001
+  }
+
     ingress{
     description = "prashansa security group from terraform mysql"
     cidr_blocks = [var.all_cidr_block]
