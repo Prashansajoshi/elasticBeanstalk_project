@@ -46,7 +46,7 @@ resource "aws_elastic_beanstalk_environment" "env" {
   setting {
     namespace = "aws:ec2:vpc"
     name      = "ELBScheme"
-    value     = "public" # or "internal" depending on your setup
+    value     = "internal" # or "public" depending on your setup
   }
 
   setting {
