@@ -50,8 +50,8 @@ jobs:
         run: terraform apply -auto-approve -var "iam_instance_profile=your-iam-instance-profile"
         working-directory: terraform 
 
-      # - name: Terraform Destroy 
-      #   run: terraform destroy -auto-approve -var "iam_instance_profile=your-iam-instance-profile" 
+      # - name: Terraform Destroy  
+      #   run: terraform destroy -auto-approve -var "iam_instance_profile=your-iam-instance-profile"
       #   working-directory: terraform
 
 
@@ -120,12 +120,14 @@ jobs:
             --application-name ${{ secrets.APPLICATION_NAME }} \
             --environment-name ${{ secrets.ENVIRONMENT_NAME }} \
             --version-label $VERSION_LABEL
+
+      
   
-      # - name: Deploy to Elastic Beanstalk (Example)
-      #   run: |
-      #     eb init -p node.js your-application-name --region $AWS_DEFAULT_REGION
-      #     eb create your-environment-name
-      #     eb deploy your-environment-name
+    #   # - name: Deploy to Elastic Beanstalk (Example) 
+    #   #   run: |
+    #   #     eb init -p node.js your-application-name --region $AWS_DEFAULT_REGION
+    #   #     eb create your-environment-name
+    #   #     eb deploy your-environment-name
   
       - name: Notify success
         if: success()

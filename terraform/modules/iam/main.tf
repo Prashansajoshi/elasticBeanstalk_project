@@ -1,5 +1,5 @@
 resource "aws_iam_role" "eb_role" {
-  name = "aws-elasticbeanstalk-ec2-role"
+  name = "aws-elasticbeanstalk-ec2-roles"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -23,7 +23,7 @@ resource "aws_iam_role" "eb_role" {
 }
 
 resource "aws_iam_instance_profile" "eb_profile" {
-  name = "elastic-beanstalk-ec2-role"
+  name = "elastic-beanstalk-ec2-roles"
   role = aws_iam_role.eb_role.name
 }
 
