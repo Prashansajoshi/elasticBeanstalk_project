@@ -49,6 +49,12 @@ resource "aws_elastic_beanstalk_environment" "env" {
     value     = "public" # or "internal" depending on your setup
   }
 
+    setting {
+    namespace = "aws:ec2:vpc"
+    name      = "ELBSubnets"
+    value     = "subnet-0fb1ad0ff2670212e,subnet-0586eedd6d2c045bb" # or "internal" depending on your setup
+  }
+
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "SecurityGroups"
