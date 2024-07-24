@@ -116,6 +116,8 @@ module "elastic_beanstalk" {
   source               = "./modules/elastic_beanstalk"
   application_name     = var.application_name
   environment_name     = var.environment_name
+  green_environment_name = var.green_environment_name
+  green_solution_stack_name = var.green_solution_stack_name
   instance_type        = var.instance_type
   solution_stack_name  = var.solution_stack_name
   key_name             = var.key_name

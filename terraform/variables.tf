@@ -147,11 +147,11 @@ variable "application_name" {
   default     = "my-nodejs-app"
 }
 
-# variable "environment_name" {
-#   description = "The name of the Elastic Beanstalk environment"
-#   type        = string
-#   default     = "my-nodejs-env"
-# }
+variable "environment_name" {
+  description = "The name of the Elastic Beanstalk environment"
+  type        = string
+  default     = "my-nodejs-env"
+}
 
 variable "solution_stack_name" {
   description = "The solution stack name for Elastic Beanstalk"
@@ -159,18 +159,19 @@ variable "solution_stack_name" {
   default     = "64bit Amazon Linux 2023 v6.1.7 running Node.js 20"
 }
 
-
 variable "iam_instance_profile" {
   description = "The IAM instance profile for Elastic Beanstalk"
   type        = string
 }
 
-
-
-
-
-variable "environment_name" {
+variable "green_environment_name" {
   description = "The name of the Elastic Beanstalk environment"
   type        = string
   default     = "green-nodejs-env"
+}
+
+variable "green_solution_stack_name" {
+  description = "The solution stack name for Elastic Beanstalk"
+  type        = string
+  default     = "64bit Amazon Linux 2 v5.5.0 running Node.js 16"
 }
