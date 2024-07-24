@@ -62,12 +62,6 @@ variable "notification_email" {
 }
 
 
-variable "notification_email" {
-  description = "The email address to send CloudWatch alarm notifications to"
-  type        = string
-}
-
-
 
 
 
