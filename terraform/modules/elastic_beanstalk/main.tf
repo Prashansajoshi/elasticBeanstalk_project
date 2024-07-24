@@ -129,6 +129,40 @@ resource "aws_sns_topic_subscription" "alarm_subscription" {
   endpoint  = var.notification_email
 }
 
+resource "aws_cloudwatch_metric_alarm" "high_cpu_alarm" {
+  alarm_name          = "${var.application_name}-${var.environment_name}-high-cpu"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = "2"
+  metric_name         = "CPUUtilization"
+  namespace           = "AWS/ElasticBeanstalk"
+  period              = "120"
+  statistic           = "Average"
+  threshold           = "80"
+  alarm_description   = "This metric monitors EC2 CPU utilization"
+  alarm_actions       = [aws_sns_topic.alarm_topic.arn]
+
+  dimensions = {
+    EnvironmentName = aws_elastic_beanstalk_environment.env.name
+  }
+}
+
+resource "aws_cloudwatch_metric_alarm" "green_high_cpu_alarm" {
+  alarm_name          = "${var.application_name}-${var.green_environment_name}-high-cpu"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = "2"
+  metric_name         = "CPUUtilization"
+  namespace           = "AWS/ElasticBeanstalk"
+  period              = "120"
+  statistic           = "Average"
+  threshold           = "80"
+  alarm_description   = "This metric monitors EC2 CPU utilization"
+  alarm_actions       = [aws_sns_topic.alarm_topic.arn]
+
+  dimensions = {
+    EnvironmentName = aws_elastic_beanstalk_environment.green_env.name
+  }
+}
+
 
 
 
