@@ -127,7 +127,7 @@ resource "aws_elastic_beanstalk_environment" "env" {
 resource "aws_elastic_beanstalk_application_version" "green_app_version" {
   name        = "${var.application_name}-${var.green_environment_name}-v1" # Add this line to define the version name
   application = aws_elastic_beanstalk_application.app.name
-  bucket      = data.aws_s3_bucket.existing_bucket
+  bucket      = data.aws_s3_bucket.existing_bucket.bucket
   key         = "app.zip" # Ensure your deployment package is named app.zip and uploaded to this bucket
 
   lifecycle {

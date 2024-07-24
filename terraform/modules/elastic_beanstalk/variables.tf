@@ -72,6 +72,5 @@ variable "green_solution_stack_name" {
 }
 
 variable "bucket_name" {
-  type = string
   default = "my-nodejs-app-eb-bucket"
 }
