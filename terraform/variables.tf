@@ -164,3 +164,13 @@ variable "iam_instance_profile" {
   description = "The IAM instance profile for Elastic Beanstalk"
   type        = string
 }
+
+
+
+
+
+variable "environment_name" {
+  description = "The name of the Elastic Beanstalk environment"
+  type        = string
+  default     = "green-nodejs-env"
+}

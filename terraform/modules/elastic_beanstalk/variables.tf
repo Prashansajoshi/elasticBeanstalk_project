@@ -55,3 +55,18 @@ variable "all_cidr_block" {
 variable "security_group_id" {
   description = "The ID of the security group to attach to the Elastic Beanstalk environment."
 }
+
+
+
+
+variable "green_environment_name" {
+  description = "The name of the Elastic Beanstalk environment"
+  type        = string
+  default     = "green-nodejs-env"
+}
+
+variable "green_solution_stack_name" {
+  description = "The solution stack name for Elastic Beanstalk"
+  type        = string
+  default     = "64bit Amazon Linux 2 v5.5.0 running Node.js 16"
+}
