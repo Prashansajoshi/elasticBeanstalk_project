@@ -46,3 +46,12 @@ variable "iam_instance_profile" {
   description = "The name of the IAM instance profile for Elastic Beanstalk"
   type        = string
 }
+
+variable "all_cidr_block" {
+  description = "The CIDR block for allowing access."
+  default     = "0.0.0.0/0"
+}
+
+variable "security_group_id" {
+  description = "The ID of the security group to attach to the Elastic Beanstalk environment."
+}
