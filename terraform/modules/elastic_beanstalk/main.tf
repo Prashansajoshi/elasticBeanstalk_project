@@ -43,11 +43,11 @@ resource "aws_elastic_beanstalk_environment" "env" {
     value     = "subnet-0ecacbf893e965eb4,subnet-0b88fa7d36e0f1787" # Replace with your Subnet IDs
   }
 
-  setting {
-    namespace = "aws:ec2:vpc"
-    name      = "ELBScheme"
-    value     = "internal" # or "public" depending on your setup
-  }
+  # setting {
+  #   namespace = "aws:ec2:vpc"
+  #   name      = "ELBScheme"
+  #   value     = "internal" # or "public" depending on your setup
+  # }
 
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
