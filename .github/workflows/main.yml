@@ -120,6 +120,8 @@ jobs:
             --application-name ${{ secrets.APPLICATION_NAME }} \
             --environment-name ${{ secrets.ENVIRONMENT_NAME }} \
             --version-label $VERSION_LABEL
+
+      
   
     #   # - name: Deploy to Elastic Beanstalk (Example)
     #   #   run: |
@@ -130,9 +132,3 @@ jobs:
       - name: Notify success
         if: success()
         run: echo "Deployment successful!!"
-
-
-
-    #     # 02_start_application:
-    #     #   command: "npm start"
-    #     #   cwd: "/var/app/staging"
