@@ -62,6 +62,6 @@ elb_subnet_ids = ["subnet-06ef81d005e56255a", "subnet-077922697b39d0782"]
 
 green_environment_name = "green-nodejs-env"
 
-green_solution_stack_name = "64bit Amazon Linux 2 v5.9.4 running Node.js 16"
+green_solution_stack_name = "64bit Amazon Linux 2023 v6.1.6 running Node.js 20"
 
 notification_email = "prashansa.joshi@adex.ltd"
