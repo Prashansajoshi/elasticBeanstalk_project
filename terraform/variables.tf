@@ -199,3 +199,9 @@ variable "notification_email" {
   type        = string
   # default     = "prashansa.joshi@adex.ltd"
 }
+
+
+variable "rds_credentials_secret_arn" {
+  description = "The ARN of the Secrets Manager secret for the RDS credentials"
+  type        = string
+}

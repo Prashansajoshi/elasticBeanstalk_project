@@ -75,14 +75,21 @@ module "rt_association" {
 #   template_files = module.template_files.files
 # }
 
+data "aws_secretsmanager_secret_version" "rds_credentials" {
+  secret_id = var.rds_credentials_secret_arn
+}
+
 module "rds" {
-  source               = "./modules/rds"
-  db_security_group_id = module.security_group.db_security_group_id
-  database_subnet_1_id = module.subnet.db_subnet_1
-  database_subnet_2_id = module.subnet.db_subnet_2
-  database_name        = var.database_name
-  db_username          = var.db_username
-  db_password          = var.db_password
+  source                     = "./modules/rds"
+  db_security_group_id       = module.security_group.db_security_group_id
+  rds_credentials_secret_arn = var.rds_credentials_secret_arn
+  database_subnet_1_id       = module.subnet.db_subnet_1
+  database_subnet_2_id       = module.subnet.db_subnet_2
+  database_name              = var.database_name
+  db_username                = jsondecode(data.aws_secretsmanager_secret_version.rds_credentials.secret_string)["username"]
+  db_password                = jsondecode(data.aws_secretsmanager_secret_version.rds_credentials.secret_string)["password"]
+  # db_username          = var.db_username
+  # db_password          = var.db_password
 }
 
 # module "alb" {

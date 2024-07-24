@@ -31,3 +31,6 @@ variable "db_password" {
 
 variable "database_name"{
 }
+
+variable "rds_credentials_secret_arn" {
+}

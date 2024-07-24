@@ -1,3 +1,7 @@
+# data "aws_secretsmanager_secret_version" "rds_credentials" {
+#   secret_id = var.rds_credentials_secret_arn
+# }
+
 resource "aws_db_subnet_group" "prashansa_db_subnet_group" {
   name       = "prashansa_db_subnet_groups"
   subnet_ids = [var.database_subnet_1_id, var.database_subnet_2_id]
