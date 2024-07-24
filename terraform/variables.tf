@@ -126,7 +126,7 @@ variable "restrict_public_buckets" {
 
 variable "database_name" {
   description = "Database name"
-  default = "testdb"
+  default     = "testdb"
 }
 
 variable "db_username" {
@@ -159,8 +159,43 @@ variable "solution_stack_name" {
   default     = "64bit Amazon Linux 2023 v6.1.7 running Node.js 20"
 }
 
+variable "vpc_id" {
+  description = "The VPC ID for the environment"
+  type        = string
+  default     = "vpc-077186d872275da74"
+}
+
+variable "subnet_ids" {
+  description = "The subnet IDs for the environment"
+  type        = list(string)
+  default     = ["subnet-013f140f645be7f4a,subnet-0d9424a953a9cc2c5"]
+}
+
+variable "elb_subnet_ids" {
+  description = "The ELB subnet IDs for the environment"
+  type        = list(string)
+  default = [ "subnet-06ef81d005e56255a,subnet-077922697b39d0782" ]
+}
 
 variable "iam_instance_profile" {
   description = "The IAM instance profile for Elastic Beanstalk"
   type        = string
+}
+
+variable "green_environment_name" {
+  description = "The name of the Elastic Beanstalk environment"
+  type        = string
+  default     = "green-nodejs-env"
+}
+
+variable "green_solution_stack_name" {
+  description = "The solution stack name for Elastic Beanstalk"
+  type        = string
+  default     = "64bit Amazon Linux 2 v5.9.4 running Node.js 16"
+}
+
+variable "notification_email" {
+  description = "The email address to send CloudWatch alarm notifications to"
+  type        = string
+  default     = "prashansa.joshi@adex.ltd"
 }
