@@ -90,7 +90,7 @@ resource "aws_elastic_beanstalk_environment" "env" {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "DB_HOST"
     # value     = aws_db_instance.prashansa_private_db_instance.endpoint
-    value = var.db_host
+    value     = var.db_host
   }
 
   setting {
