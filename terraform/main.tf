@@ -124,4 +124,9 @@ module "elastic_beanstalk" {
   db_password          = var.db_password
   iam_instance_profile = module.iam.eb_instance_profile_name
   db_host              = module.rds.db_instance_endpoint
+  vpc_id               = var.vpc_id
+  all_cidr_block       = var.all_cidr_block
+  elb_subnet_ids       = var.elb_subnet_ids
+  subnet_ids           = var.subnet_ids
+  bucket_name_ebs      = "${var.application_name}-eb-bucket"
 }
