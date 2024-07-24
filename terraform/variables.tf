@@ -173,5 +173,5 @@ variable "green_environment_name" {
 variable "green_solution_stack_name" {
   description = "The solution stack name for Elastic Beanstalk"
   type        = string
-  default     = "64bit Amazon Linux 2 v5.5.0 running Node.js 16"
+  default     = "64bit Amazon Linux 2 v5.9.4 running Node.js 16"
 }

@@ -52,7 +52,7 @@ resource "aws_elastic_beanstalk_environment" "env" {
     setting {
     namespace = "aws:ec2:vpc"
     name      = "ELBSubnets"
-    value     = "subnet-0fb1ad0ff2670212e,subnet-0586eedd6d2c045bb" # or "internal" depending on your setup
+    value     = "subnet-06ef81d005e56255a,subnet-077922697b39d0782" # or "internal" depending on your setup
   }
 
   setting {
@@ -145,13 +145,13 @@ resource "aws_elastic_beanstalk_environment" "green_env" {
   setting {
     namespace = "aws:ec2:vpc"
     name      = "VPCId"
-    value     = "vpc-0c067481aa12fa331" # Replace with your VPC ID
+    value     = "vpc-077186d872275da74" # Replace with your VPC ID
   }
 
   setting {
     namespace = "aws:ec2:vpc"
     name      = "Subnets"
-    value     = "subnet-0b7db4ed473514fb7,subnet-0e25bc556da5f78c0" # Replace with your Subnet IDs
+    value     = "subnet-013f140f645be7f4a,subnet-0d9424a953a9cc2c5" # Replace with your Subnet IDs
   }
 
   setting {
@@ -163,7 +163,7 @@ resource "aws_elastic_beanstalk_environment" "green_env" {
     setting {
     namespace = "aws:ec2:vpc"
     name      = "ELBSubnets"
-    value     = "subnet-0fb1ad0ff2670212e,subnet-0586eedd6d2c045bb" # or "internal" depending on your setup
+    value     = "subnet-06ef81d005e56255a,subnet-077922697b39d0782" # or "internal" depending on your setup
   }
 
   setting {
