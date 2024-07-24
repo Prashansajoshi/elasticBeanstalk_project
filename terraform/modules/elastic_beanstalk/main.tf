@@ -34,13 +34,15 @@ resource "aws_elastic_beanstalk_environment" "env" {
   setting {
     namespace = "aws:ec2:vpc"
     name      = "VPCId"
-    value     = "vpc-077186d872275da74" # Replace with your VPC ID
+    # value     = "vpc-077186d872275da74" # Replace with your VPC ID
+    value = var.vpc_id
   }
 
   setting {
     namespace = "aws:ec2:vpc"
     name      = "Subnets"
-    value     = "subnet-013f140f645be7f4a,subnet-0d9424a953a9cc2c5" # Replace with your Subnet IDs
+    # value     = "subnet-013f140f645be7f4a,subnet-0d9424a953a9cc2c5" # Replace with your Subnet IDs
+    value = join(",", var.subnet_ids)
   }
 
   setting {
@@ -49,10 +51,11 @@ resource "aws_elastic_beanstalk_environment" "env" {
     value     = "public" # or "internal" depending on your setup
   }
 
-    setting {
+  setting {
     namespace = "aws:ec2:vpc"
     name      = "ELBSubnets"
-    value     = "subnet-06ef81d005e56255a,subnet-077922697b39d0782" # or "internal" depending on your setup
+    # value     = "subnet-06ef81d005e56255a,subnet-077922697b39d0782" # or "internal" depending on your setup
+    value = join(",", var.elb_subnet_ids)
   }
 
   setting {
@@ -96,7 +99,7 @@ resource "aws_elastic_beanstalk_environment" "env" {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "DB_HOST"
     # value     = aws_db_instance.prashansa_private_db_instance.endpoint
-    value     = var.db_host
+    value = var.db_host
   }
 
   setting {
@@ -117,7 +120,7 @@ resource "aws_elastic_beanstalk_environment" "env" {
     value     = var.database_name
   }
 
-} 
+}
 
 resource "aws_sns_topic" "alarm_topic" {
   name = "${var.application_name}-alarm-topic"
@@ -204,7 +207,7 @@ resource "aws_elastic_beanstalk_environment" "green_env" {
     value     = "public" # or "internal" depending on your setup
   }
 
-    setting {
+  setting {
     namespace = "aws:ec2:vpc"
     name      = "ELBSubnets"
     value     = "subnet-06ef81d005e56255a,subnet-077922697b39d0782" # or "internal" depending on your setup
@@ -251,7 +254,7 @@ resource "aws_elastic_beanstalk_environment" "green_env" {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "DB_HOST"
     # value     = aws_db_instance.prashansa_private_db_instance.endpoint
-    value     = var.db_host
+    value = var.db_host
   }
 
   setting {
@@ -272,4 +275,4 @@ resource "aws_elastic_beanstalk_environment" "green_env" {
     value     = var.database_name
   }
 
-} 
+}
