@@ -46,7 +46,7 @@ jobs:
         run: terraform plan -var "iam_instance_profile=your-iam-instance-profile" 
         working-directory: terraform
 
-    #   - name: Terraform apply
+    #   - name: Terraform apply ####
     #     run: terraform apply -auto-approve -var "iam_instance_profile=your-iam-instance-profile"
     #     working-directory: terraform 
 
