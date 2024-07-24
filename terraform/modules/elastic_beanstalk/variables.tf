@@ -56,6 +56,19 @@ variable "security_group_id" {
   description = "The ID of the security group to attach to the Elastic Beanstalk environment."
 }
 
+variable "notification_email" {
+  description = "The email address to send CloudWatch alarm notifications to"
+  type        = string
+}
+
+
+variable "notification_email" {
+  description = "The email address to send CloudWatch alarm notifications to"
+  type        = string
+}
+
+
+
 
 
 

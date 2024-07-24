@@ -175,3 +175,9 @@ variable "green_solution_stack_name" {
   type        = string
   default     = "64bit Amazon Linux 2 v5.9.4 running Node.js 16"
 }
+
+variable "notification_email" {
+  description = "The email address to send CloudWatch alarm notifications to"
+  type        = string
+  default = "prashansa.joshi@adex.ltd"
+}

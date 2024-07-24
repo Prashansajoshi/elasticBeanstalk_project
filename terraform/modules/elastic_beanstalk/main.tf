@@ -119,6 +119,16 @@ resource "aws_elastic_beanstalk_environment" "env" {
 
 } 
 
+resource "aws_sns_topic" "alarm_topic" {
+  name = "${var.application_name}-alarm-topic"
+}
+
+resource "aws_sns_topic_subscription" "alarm_subscription" {
+  topic_arn = aws_sns_topic.alarm_topic.arn
+  protocol  = "email"
+  endpoint  = var.notification_email
+}
+
 
 
 
