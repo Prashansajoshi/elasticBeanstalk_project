@@ -113,20 +113,26 @@ module "iam" {
 }
 
 module "elastic_beanstalk" {
-  source               = "./modules/elastic_beanstalk"
-  application_name     = var.application_name
-  environment_name     = var.environment_name
-  instance_type        = var.instance_type
-  solution_stack_name  = var.solution_stack_name
-  key_name             = var.key_name
-  database_name        = var.database_name
-  db_username          = var.db_username
-  db_password          = var.db_password
-  iam_instance_profile = module.iam.eb_instance_profile_name
-  db_host              = module.rds.db_instance_endpoint
-  vpc_id               = var.vpc_id
-  all_cidr_block       = var.all_cidr_block
-  elb_subnet_ids       = var.elb_subnet_ids
-  subnet_ids           = var.subnet_ids
-  bucket_name_ebs      = "${var.application_name}-eb-bucket"
+  source                    = "./modules/elastic_beanstalk"
+  application_name          = var.application_name
+  environment_name          = var.environment_name
+  green_environment_name    = var.green_environment_name
+  green_solution_stack_name = var.green_solution_stack_name
+  instance_type             = var.instance_type
+  solution_stack_name       = var.solution_stack_name
+  key_name                  = var.key_name
+  database_name             = var.database_name
+  db_username               = var.db_username
+  db_password               = var.db_password
+  iam_instance_profile      = module.iam.eb_instance_profile_name
+  db_host                   = module.rds.db_instance_endpoint
+  security_group_id         = module.security_group.security_group_id
+  notification_email        = var.notification_email
+  vpc_id                    = var.vpc_id
+  all_cidr_block            = var.all_cidr_block
+  elb_subnet_ids            = var.elb_subnet_ids
+  subnet_ids                = var.subnet_ids
+  bucket_name_ebs           = "${var.application_name}-eb-bucket"
+
+  # security_group_id    = aws_security_group.prashansa_sg.id   ##
 }
