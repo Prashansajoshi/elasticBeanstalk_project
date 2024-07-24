@@ -34,13 +34,13 @@ resource "aws_elastic_beanstalk_environment" "env" {
   setting {
     namespace = "aws:ec2:vpc"
     name      = "VPCId"
-    value     = "vpc-0126960c2b63cc3d9" # Replace with your VPC ID
+    value     = "vpc-0c067481aa12fa331" # Replace with your VPC ID
   }
 
   setting {
     namespace = "aws:ec2:vpc"
     name      = "Subnets"
-    value     = "subnet-0ffdd87e544570d94,subnet-0dd32646b98a042b4" # Replace with your Subnet IDs
+    value     = "subnet-0b7db4ed473514fb7,subnet-0e25bc556da5f78c0" # Replace with your Subnet IDs
   }
 
   setting {
