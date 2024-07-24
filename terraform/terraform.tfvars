@@ -65,5 +65,3 @@ green_environment_name = "green-nodejs-env"
 green_solution_stack_name = "64bit Amazon Linux 2 v5.9.4 running Node.js 16"
 
 notification_email = "prashansa.joshi@adex.ltd"
-
-rds_credentials_secret_arn = "arn:aws:secretsmanager:us-east-1:426857564226:secret:rds-credentials-5f2KZ9"
