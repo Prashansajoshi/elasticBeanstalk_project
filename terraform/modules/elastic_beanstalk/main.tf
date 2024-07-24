@@ -187,18 +187,20 @@ resource "aws_elastic_beanstalk_environment" "green_env" {
   name                = var.green_environment_name
   application         = aws_elastic_beanstalk_application.app.name
   solution_stack_name = var.green_solution_stack_name
-  cname_prefix        = "${var.application_name}-${var.green_environment_name}"
+  cname_prefix        = "${var.application_name}-${var.green_environment_name}-${timestamp()}"
 
   setting {
     namespace = "aws:ec2:vpc"
     name      = "VPCId"
-    value     = "vpc-077186d872275da74" # Replace with your VPC ID
+    value     = var.vpc_id
+    # value     = "vpc-077186d872275da74" # Replace with your VPC ID
   }
 
   setting {
     namespace = "aws:ec2:vpc"
     name      = "Subnets"
-    value     = "subnet-013f140f645be7f4a,subnet-0d9424a953a9cc2c5" # Replace with your Subnet IDs
+    value = join(",", var.subnet_ids)
+    # value     = "subnet-013f140f645be7f4a,subnet-0d9424a953a9cc2c5" # Replace with your Subnet IDs
   }
 
   setting {
@@ -210,7 +212,8 @@ resource "aws_elastic_beanstalk_environment" "green_env" {
   setting {
     namespace = "aws:ec2:vpc"
     name      = "ELBSubnets"
-    value     = "subnet-06ef81d005e56255a,subnet-077922697b39d0782" # or "internal" depending on your setup
+    value = join(",", var.elb_subnet_ids)
+    # value     = "subnet-06ef81d005e56255a,subnet-077922697b39d0782" # or "internal" depending on your setup
   }
 
   setting {
