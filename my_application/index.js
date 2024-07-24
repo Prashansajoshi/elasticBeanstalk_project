@@ -5,7 +5,7 @@ const path = require('path');
 const db = require('./connection'); // Import the MySQL connection
 
 const app = express();
-const port = 3001;
+const port = 8080;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
