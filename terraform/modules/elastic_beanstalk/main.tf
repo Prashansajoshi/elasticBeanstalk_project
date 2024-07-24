@@ -187,7 +187,7 @@ resource "aws_elastic_beanstalk_environment" "green_env" {
   name                = var.green_environment_name
   application         = aws_elastic_beanstalk_application.app.name
   solution_stack_name = var.green_solution_stack_name
-  cname_prefix        = "${var.application_name}-${var.green_environment_name}-${timestamp()}"
+  cname_prefix        = "${var.application_name}-${var.green_environment_name}-green"
 
   setting {
     namespace = "aws:ec2:vpc"
