@@ -12,5 +12,5 @@ output "green_environment_url" {
 }
 
 output "s3_bucket_name" {
-  value = data.aws_s3_bucket.existing_bucket
+  value = data.aws_s3_bucket.existing_bucket.bucket
 }
