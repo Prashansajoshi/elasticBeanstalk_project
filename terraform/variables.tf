@@ -147,11 +147,11 @@ variable "application_name" {
   default     = "my-nodejs-app"
 }
 
-variable "environment_name" {
-  description = "The name of the Elastic Beanstalk environment"
-  type        = string
-  default     = "my-nodejs-env"
-}
+# variable "environment_name" {
+#   description = "The name of the Elastic Beanstalk environment"
+#   type        = string
+#   default     = "my-nodejs-env"
+# }
 
 variable "solution_stack_name" {
   description = "The solution stack name for Elastic Beanstalk"

@@ -70,3 +70,8 @@ variable "green_solution_stack_name" {
   type        = string
   default     = "64bit Amazon Linux 2 v5.5.0 running Node.js 16"
 }
+
+variable "bucket_name" {
+  type = string
+  default = "my-nodejs-app-eb-bucket"
+}
