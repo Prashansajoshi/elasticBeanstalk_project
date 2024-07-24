@@ -128,5 +128,5 @@ module "elastic_beanstalk" {
   db_host                   = module.rds.db_instance_endpoint
   security_group_id         = module.security_group.security_group_id
   notification_email        = var.notification_email
-  # security_group_id    = aws_security_group.prashansa_sg.id
+  # security_group_id    = aws_security_group.prashansa_sg.id   ##
 }
