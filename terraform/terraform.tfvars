@@ -44,7 +44,7 @@ ignore_public_acls = true
 
 restrict_public_buckets = true
 
-# database_name = "testdb"
+database_name = "testdb"
 
 # db_username = "testuser"
 

@@ -70,7 +70,7 @@ jobs:
       #   run: terraform plan -var-file="terraform.tfvars" -auto-approve
       #   working-directory: terraform
 
-      # - name: Terraform apply ####
+      # - name: Terraform apply 
       #   run: terraform apply -var-file="terraform.tfvars" -auto-approve
       #   working-directory: terraform 
 
