@@ -60,8 +60,8 @@ module "rds" {
   database_subnet_1_id       = module.subnet.db_subnet_1
   database_subnet_2_id       = module.subnet.db_subnet_2
   database_name              = var.database_name
-  db_username = var.db_username
-  db_password = var.db_password
+  db_username                = var.db_username
+  db_password                = var.db_password
 }
 
 module "s3_bucket" {
@@ -92,13 +92,13 @@ module "elastic_beanstalk" {
   database_name             = var.database_name
   db_username               = var.db_username
   db_password               = var.db_password
-  iam_instance_profile = module.iam.eb_instance_profile_name
-  db_host              = module.rds.db_instance_endpoint
-  security_group_id    = module.security_group.security_group_id
-  notification_email   = var.notification_email
-  vpc_id               = var.vpc_id
-  all_cidr_block       = var.all_cidr_block
-  elb_subnet_ids       = var.elb_subnet_ids
-  subnet_ids           = var.subnet_ids
-  bucket_name_ebs      = "${var.application_name}-eb-bucket"
+  iam_instance_profile      = module.iam.eb_instance_profile_name
+  db_host                   = module.rds.db_instance_endpoint
+  security_group_id         = module.security_group.security_group_id
+  notification_email        = var.notification_email
+  vpc_id                    = var.vpc_id
+  all_cidr_block            = var.all_cidr_block
+  elb_subnet_ids            = var.elb_subnet_ids
+  subnet_ids                = var.subnet_ids
+  bucket_name_ebs           = "${var.application_name}-eb-bucket"
 }

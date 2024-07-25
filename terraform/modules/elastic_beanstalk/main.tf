@@ -34,14 +34,12 @@ resource "aws_elastic_beanstalk_environment" "env" {
   setting {
     namespace = "aws:ec2:vpc"
     name      = "VPCId"
-    # value     = "vpc-077186d872275da74" # Replace with your VPC ID
     value = var.vpc_id
   }
 
   setting {
     namespace = "aws:ec2:vpc"
     name      = "Subnets"
-    # value     = "subnet-013f140f645be7f4a,subnet-0d9424a953a9cc2c5" # Replace with your Subnet IDs
     value = join(",", var.subnet_ids)
   }
 
@@ -54,7 +52,6 @@ resource "aws_elastic_beanstalk_environment" "env" {
   setting {
     namespace = "aws:ec2:vpc"
     name      = "ELBSubnets"
-    # value     = "subnet-06ef81d005e56255a,subnet-077922697b39d0782" # or "internal" depending on your setup
     value = join(",", var.elb_subnet_ids)
   }
 
@@ -98,7 +95,6 @@ resource "aws_elastic_beanstalk_environment" "env" {
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "DB_HOST"
-    # value     = aws_db_instance.prashansa_private_db_instance.endpoint
     value = var.db_host
   }
 
@@ -175,7 +171,7 @@ resource "aws_elastic_beanstalk_application_version" "green_app_version" {
   name        = "${var.application_name}-${var.green_environment_name}-v1" # Add this line to define the version name
   application = aws_elastic_beanstalk_application.app.name
   bucket      = data.aws_s3_bucket.existing_bucket.bucket
-  key         = "app.zip" # Ensure your deployment package is named app.zip and uploaded to this bucket
+  key         = "app.zip" 
 
   lifecycle {
     create_before_destroy = true
@@ -193,14 +189,12 @@ resource "aws_elastic_beanstalk_environment" "green_env" {
     namespace = "aws:ec2:vpc"
     name      = "VPCId"
     value     = var.vpc_id
-    # value     = "vpc-077186d872275da74" # Replace with your VPC ID
   }
 
   setting {
     namespace = "aws:ec2:vpc"
     name      = "Subnets"
     value = join(",", var.subnet_ids)
-    # value     = "subnet-013f140f645be7f4a,subnet-0d9424a953a9cc2c5" # Replace with your Subnet IDs
   }
 
   setting {
@@ -213,7 +207,6 @@ resource "aws_elastic_beanstalk_environment" "green_env" {
     namespace = "aws:ec2:vpc"
     name      = "ELBSubnets"
     value = join(",", var.elb_subnet_ids)
-    # value     = "subnet-06ef81d005e56255a,subnet-077922697b39d0782" # or "internal" depending on your setup
   }
 
   setting {
@@ -256,7 +249,6 @@ resource "aws_elastic_beanstalk_environment" "green_env" {
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "DB_HOST"
-    # value     = aws_db_instance.prashansa_private_db_instance.endpoint
     value = var.db_host
   }
 
