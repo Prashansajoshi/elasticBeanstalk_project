@@ -48,9 +48,9 @@ restrict_public_buckets = true
 
 database_name = "testdb"
 
-# db_username = "testuser"
+db_username = "testuser"
 
-# db_password = "test0000"
+db_password = "test0000"
 
 application_name = "my-nodejs-app"
 
