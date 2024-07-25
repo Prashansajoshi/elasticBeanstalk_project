@@ -1,3 +1,5 @@
+rds_credentials_secret_arn = "arn:aws:secretsmanager:us-east-1:426857564226:secret:rds-credentials-5f2KZ9"
+
 iam_instance_profile = "elastic-beanstalk-ec2-role"
 
 vpc_cidr = "10.0.0.0/16"
