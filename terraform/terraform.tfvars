@@ -42,11 +42,11 @@ ignore_public_acls = true
 
 restrict_public_buckets = true
 
-database_name = "testdb"
+# database_name = "testdb"
 
-db_username = "testuser"
+# db_username = "testuser"
 
-db_password = "test0000"
+# db_password = "test0000"
 
 application_name = "my-nodejs-app"
 
@@ -60,7 +60,7 @@ subnet_ids = ["subnet-013f140f645be7f4a", "subnet-0d9424a953a9cc2c5"]
 
 elb_subnet_ids = ["subnet-06ef81d005e56255a", "subnet-077922697b39d0782"]
 
-green_environment_name = "green-nodejs-env"
+green_environment_name = "green-nodejs-env-green"
 
 green_solution_stack_name = "64bit Amazon Linux 2023 v6.1.6 running Node.js 20"
 

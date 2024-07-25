@@ -157,6 +157,29 @@ jobs:
         if: success()
         run: echo "Deployment successful!!"
 
+        
+
+    wait-for-deployment:
+      runs-on: ubuntu-latest
+      needs: deploy
+  
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
+  
+        - name: Wait for Elastic Beanstalk environment to be ready
+          run: |
+            while true; do
+              ENV_STATUS=$(aws elasticbeanstalk describe-environments --environment-names ${{ secrets.ENVIRONMENT_NAME }} --query "Environments[0].Status" --output text)
+              if [ "$ENV_STATUS" == "Ready" ]; then
+                echo "Environment is ready."
+                break
+              else
+                echo "Environment status is $ENV_STATUS. Waiting..."
+                sleep 30
+              fi
+            done
+
 
     swap-urls:
         runs-on: ubuntu-latest
