@@ -97,10 +97,10 @@ module "rds" {
   database_name              = var.database_name
   # db_username                = jsondecode(data.aws_secretsmanager_secret_version.rds_credentials.secret_string)["username"]
   # db_password                = jsondecode(data.aws_secretsmanager_secret_version.rds_credentials.secret_string)["password"]
-  db_username                = jsondecode(data.aws_secretsmanager_secret_version.rds_credentials.secret_string)["username"]
-  db_password                = jsondecode(data.aws_secretsmanager_secret_version.rds_credentials.secret_string)["password"]
-  # db_username          = var.db_username
-  # db_password          = var.db_password
+  # db_username                = jsondecode(data.aws_secretsmanager_secret_version.rds_credentials.secret_string)["username"]
+  # db_password                = jsondecode(data.aws_secretsmanager_secret_version.rds_credentials.secret_string)["password"]
+  db_username          = var.db_username
+  db_password          = var.db_password
 }
 
 # module "alb" {

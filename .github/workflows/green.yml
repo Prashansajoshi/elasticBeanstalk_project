@@ -58,7 +58,7 @@ jobs:
             -var="rds_credentials_secret_arn=$RDS_CREDENTIALS_SECRET_ARN"
         working-directory: terraform
 
-      # - name: Terraform Destroy
+      # - name: Terraform Destroy #
       #   env:
       #     RDS_CREDENTIALS_SECRET_ARN: ${{ secrets.RDS_CREDENTIALS_SECRET_ARN }}
       #   run: |
