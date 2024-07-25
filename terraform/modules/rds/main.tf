@@ -17,12 +17,12 @@ resource "aws_db_subnet_group" "prashansa_db_subnet_group" {
 
 resource "aws_db_instance" "prashansa_private_db_instance" {
   allocated_storage      = 10
-  db_name                = var.database_name  #testdb
+  db_name                = var.database_name #testdb
   engine                 = "mysql"
   engine_version         = "8.0"
   instance_class         = "db.t3.micro"
-  username               = var.db_username
-  password               = var.db_password
+  username               = jsondecode(data.aws_secretsmanager_secret_version.rds_credentials.secret_string)["username"]
+  password               = jsondecode(data.aws_secretsmanager_secret_version.rds_credentials.secret_string)["password"]
   skip_final_snapshot    = true
   multi_az               = true
   db_subnet_group_name   = aws_db_subnet_group.prashansa_db_subnet_group.name
