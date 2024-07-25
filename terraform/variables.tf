@@ -129,15 +129,15 @@ variable "database_name" {
   # default     = "testdb"
 }
 
-variable "db_username" {
-  description = "Database username"
-  # default     = "testuser"
-}
+# variable "db_username" {
+#   description = "Database username"
+#   # default     = "testuser"
+# }
 
-variable "db_password" {
-  description = "Database password"
-  # default     = "test0000"
-}
+# variable "db_password" {
+#   description = "Database password"
+#   # default     = "test0000"
+# }
 
 
 ##ebs
