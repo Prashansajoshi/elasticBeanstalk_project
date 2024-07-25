@@ -129,8 +129,8 @@ module "elastic_beanstalk" {
   solution_stack_name       = var.solution_stack_name
   key_name                  = var.key_name
   database_name             = var.database_name
-  db_username               = var.db_username
-  db_password               = var.db_password
+  db_username               = jsondecode(data.aws_secretsmanager_secret_version.rds_credentials.secret_string)["username"]
+  db_password               = jsondecode(data.aws_secretsmanager_secret_version.rds_credentials.secret_string)["password"]
   iam_instance_profile      = module.iam.eb_instance_profile_name
   db_host                   = module.rds.db_instance_endpoint
   security_group_id         = module.security_group.security_group_id
