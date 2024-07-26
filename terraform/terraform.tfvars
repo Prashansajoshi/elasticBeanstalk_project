@@ -1,6 +1,6 @@
 # rds_credentials_secret_arn = "arn:aws:secretsmanager:us-east-1:426857564226:secret:rds-credentials-5f2KZ9"
 
-rds_credentials_secret_name = "rds-credentials"
+# rds_credentials_secret_name = "rds-credentials"
 
 iam_instance_profile = "elastic-beanstalk-ec2-role"
 
